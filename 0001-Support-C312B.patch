@@ -1,6 +1,6 @@
-From fc62e47d59439b9d85fd3efd50f1c0e049307edb Mon Sep 17 00:00:00 2001
+From af6d7d67e61c6b6b86235e3430fcf1ace4fdd0a8 Mon Sep 17 00:00:00 2001
 From: zfdx123 <2915441170@qq.com>
-Date: Thu, 19 Jan 2023 10:30:53 +0800
+Date: Thu, 19 Jan 2023 10:53:37 +0800
 Subject: [PATCH] Support C312B
 
 ---
@@ -20,7 +20,7 @@ Subject: [PATCH] Support C312B
  create mode 100644 target/linux/ramips/patches-5.10/0038-mtd-ralink-add-mt7620-nand-driver.patch
 
 diff --git a/target/linux/generic/files/drivers/net/phy/rtl8367b.c b/target/linux/generic/files/drivers/net/phy/rtl8367b.c
-index 3599791a51..1ff12b3bf0 100644
+index 3599791a51..e5304110f4 100644
 --- a/target/linux/generic/files/drivers/net/phy/rtl8367b.c
 +++ b/target/linux/generic/files/drivers/net/phy/rtl8367b.c
 @@ -611,9 +611,17 @@ static int rtl8367b_write_initvals(struct rtl8366_smi *smi,
@@ -46,7 +46,7 @@ index 3599791a51..1ff12b3bf0 100644
  	}
  
  	switch (chip_ver) {
-+    case 0x0020:
++	case 0x0020:
  	case 0x1000:
  		chip_name = "8367RB";
  		break;
