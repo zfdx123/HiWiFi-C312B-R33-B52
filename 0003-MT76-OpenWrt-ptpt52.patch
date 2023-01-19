@@ -1,0 +1,32 @@
+From 57ce29951a1da23223cdd4b97661ea1e69bc9484 Mon Sep 17 00:00:00 2001
+From: zfdx123 <2915441170@qq.com>
+Date: Wed, 18 Jan 2023 15:25:56 +0800
+Subject: [PATCH 3/4] MT76: OpenWrt -> ptpt52
+
+---
+ package/kernel/mt76/Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/package/kernel/mt76/Makefile b/package/kernel/mt76/Makefile
+index 63d3a48085..a20c101a9f 100644
+--- a/package/kernel/mt76/Makefile
++++ b/package/kernel/mt76/Makefile
+@@ -6,11 +6,11 @@ PKG_RELEASE=5
+ PKG_LICENSE:=GPLv2
+ PKG_LICENSE_FILES:=
+ 
+-PKG_SOURCE_URL:=https://github.com/openwrt/mt76
++PKG_SOURCE_URL:=https://github.com/ptpt52/mt76
+ PKG_SOURCE_PROTO:=git
+-PKG_SOURCE_DATE:=2022-09-06
+-PKG_SOURCE_VERSION:=d70546462b7b51ebc2bcdd5c534fdf3465be62a4
+-PKG_MIRROR_HASH:=3d6b68d70a78c0072ed10ab2548344b6b3a70ad99e4edc258fafa16886f4abf9
++PKG_SOURCE_DATE:=2023-01-10
++PKG_SOURCE_VERSION:=9dbc7be426031327392b1af52f929231607afef5
++PKG_MIRROR_HASH:=84a67582d4b8480e155af301836ed574381fd9cf05c66fe5c0eb75117bd6a5f9
+ 
+ PKG_MAINTAINER:=Felix Fietkau <nbd@nbd.name>
+ PKG_USE_NINJA:=0
+-- 
+2.38.0.windows.1
+

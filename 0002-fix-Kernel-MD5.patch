@@ -1,0 +1,51 @@
+From cf7a6e58beae2ee395b1bce1d66eb77c4ff1bc3f Mon Sep 17 00:00:00 2001
+From: zfdx123 <2915441170@qq.com>
+Date: Mon, 16 Jan 2023 08:33:20 +0800
+Subject: [PATCH 2/4] fix: Kernel MD5
+
+---
+ .vermagic                     | 1 +
+ include/kernel-defaults.mk    | 3 ++-
+ package/kernel/linux/Makefile | 3 ++-
+ 3 files changed, 5 insertions(+), 2 deletions(-)
+ create mode 100644 .vermagic
+
+diff --git a/.vermagic b/.vermagic
+new file mode 100644
+index 0000000000..d393debe97
+--- /dev/null
++++ b/.vermagic
+@@ -0,0 +1 @@
++88bbb0b8c80abf953ee5e7001a2ef514
+\ No newline at end of file
+diff --git a/include/kernel-defaults.mk b/include/kernel-defaults.mk
+index 2e21392016..38ee60d691 100644
+--- a/include/kernel-defaults.mk
++++ b/include/kernel-defaults.mk
+@@ -118,7 +118,8 @@ define Kernel/Configure/Default
+ 		cp $(LINUX_DIR)/.config.set $(LINUX_DIR)/.config.prev; \
+ 	}
+ 	$(_SINGLE) [ -d $(LINUX_DIR)/user_headers ] || $(KERNEL_MAKE) INSTALL_HDR_PATH=$(LINUX_DIR)/user_headers headers_install
+-	grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | $(MKHASH) md5 > $(LINUX_DIR)/.vermagic
++	# grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | $(MKHASH) md5 > $(LINUX_DIR)/.vermagic
++	cp -f $(TOPDIR)/.vermagic $(LINUX_DIR)/.vermagic
+ endef
+ 
+ define Kernel/Configure/Initramfs
+diff --git a/package/kernel/linux/Makefile b/package/kernel/linux/Makefile
+index ff91760270..a1c8214802 100644
+--- a/package/kernel/linux/Makefile
++++ b/package/kernel/linux/Makefile
+@@ -26,7 +26,8 @@ export SHELL:=/bin/sh
+ include $(INCLUDE_DIR)/package.mk
+ 
+ ifeq ($(DUMP),)
+-  STAMP_BUILT:=$(STAMP_BUILT)_$(shell $(SCRIPT_DIR)/kconfig.pl $(LINUX_DIR)/.config | $(MKHASH) md5)
++  # STAMP_BUILT:=$(STAMP_BUILT)_$(shell $(SCRIPT_DIR)/kconfig.pl $(LINUX_DIR)/.config | $(MKHASH) md5)
++  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)
+   -include $(LINUX_DIR)/.config
+ endif
+ 
+-- 
+2.38.0.windows.1
+
