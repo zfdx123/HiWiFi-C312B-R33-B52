@@ -1,4 +1,4 @@
-# HiWiFi-C31B-R33-B52
+# HiWiFi-C312B-R33-B52
 本仓库是为了感谢相关贡献者而建立
 
 自2022年2月开始由 https://github.com/imcdd 提供设备帮助和理论支撑，到发包开始仅剩wan口问题无法解决
